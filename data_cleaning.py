@@ -161,9 +161,6 @@ class DataCleaner:
 
     # Preprocess data/input
     def preprocess_input(self, doc, remove_digits=False):
-        # Strip off HTML tags
-        doc = self.strip_html_tags(doc)
-
         # Remove accented characters
         doc = self.remove_accented_chars(doc)
 
@@ -203,12 +200,6 @@ class DataCleaner:
             normalized_corpus.append(doc)
 
         return normalized_corpus
-
-    # Strip HTML tags
-    def strip_html_tags(self, text):
-        soup = BeautifulSoup(text, "html.parser")
-        stripped_text = soup.get_text()
-        return stripped_text
 
     # Remove accented characters
     def remove_accented_chars(self, text):
